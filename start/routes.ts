@@ -28,7 +28,12 @@ Route.get("/login", async ({ view }) => {
   return view.render("login");
 });
 
+Route.get("/register", async ({ view }) => {
+  return view.render("register");
+});
+
 Route.post("/login", "UsersController.login").as("login");
+Route.post("/register", "UsersController.register").as("register");
 
 Route.get("/kelas", "KelasController.index");
 Route.get("/kelas/:id", "KelasController.show").as("kelas.detail");
@@ -41,15 +46,15 @@ Route.post("/siswa/create", "KelasController.store").as("siswa.store");
 Route.post("/siswa/update/:id", "KelasController.update").as("siswa.update");
 Route.get("/siswa/delete/:id", "KelasController.delete").as("siswa.delete");
 
-
-Route.get("/bola","BolasController.index");
-
-
-
+Route.get("/bola", "BolasController.index");
 
 Route.get("/Teacher", "TeachersController.index");
 Route.get("/Teacher/:id", "TeachersController.show").as("Teachers.detail");
 
 Route.post("/Teacher/create", "TeachersController.store").as("Teachers.store");
-Route.post("/Teacher/update/:id", "TeachersController.update").as("Teachers.update");
-Route.get("/Teacher/delete/:id", "TeachersController.delete").as("Teachers.delete");
+Route.post("/Teacher/update/:id", "TeachersController.update").as(
+  "Teachers.update"
+);
+Route.get("/Teacher/delete/:id", "TeachersController.delete").as(
+  "Teachers.delete"
+);

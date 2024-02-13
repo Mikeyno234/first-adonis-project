@@ -5,6 +5,18 @@ import { column, beforeSave, BaseModel } from '@ioc:Adonis/Lucid/Orm'
 export default class User extends BaseModel {
   @column({ isPrimary: true })
   public id: number
+  
+  @column()
+  public nama: string;
+
+  @column()
+  public role: string;
+
+  @column()
+  public umur: number;
+
+  @column()
+  public dihapus: number;
 
   @column()
   public email: string
@@ -27,4 +39,5 @@ export default class User extends BaseModel {
       user.password = await Hash.make(user.password)
     }
   }
+  
 }

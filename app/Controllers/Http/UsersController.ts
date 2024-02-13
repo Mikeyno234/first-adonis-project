@@ -2,6 +2,7 @@ import type { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
 
 import Hash from "@ioc:Adonis/Core/Hash";
 import Database from "@ioc:Adonis/Lucid/Database";
+import User from "App/Models/User";
 
 export default class UsersController {
   public async index({}: HttpContextContract) {}
@@ -28,4 +29,18 @@ export default class UsersController {
   public async update({}: HttpContextContract) {}
 
   public async destroy({}: HttpContextContract) {}
+
+  public async register({ request, response }: HttpContextContract) {
+    const { nama, umur, email, password, role } = request.all();
+
+    await User.create({
+      nama,
+      umur,
+      email,
+      password,
+      role: 'siswa',
+      dihapus: 0,
+    });
+    return response.redirect("/login");
+  }
 }
