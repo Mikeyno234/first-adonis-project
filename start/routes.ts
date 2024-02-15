@@ -58,3 +58,13 @@ Route.post("/Teacher/update/:id", "TeachersController.update").as(
 Route.get("/Teacher/delete/:id", "TeachersController.delete").as(
   "Teachers.delete"
 );
+
+Route.get("/user", "UsersController.index");
+Route.get("/user/:id", "UsersController.show").as("user.detail");
+
+Route.post("/user/create", "UsersController.store").as("user.store");
+Route.get("/user/update/:id", "UsersController.editview").as("user.updateview");
+Route.post("/user/update/:id", "UsersController.update").as("user.update");
+Route.get("/user/delete/:id", "UsersController.delete").as("user.delete");
+
+Route.get("/mahasiswa/dashboard", "MahasiswasController.index");

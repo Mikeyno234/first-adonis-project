@@ -22,40 +22,40 @@
       <h3>Kelas</h3>
       <form
         id="kelas-form"
-        action="{{ route('Teachers.update', { id: teacher?.id }) }}"
+        action="{{ route('user.update', { id: user?.id }) }}"
         method="POST"
       >
         <div style="margin-bottom: 10px">
-          <label for="kode">Nama Guru:</label>
+          <label for="kode">Nama:</label>
           <input
             type="text"
             id="nama"
             name="nama"
-            value="{{ teacher?.nama }}"
+            value="{{ user?.nama }}"
             required
           />
         </div>
         <div style="margin-bottom: 10px">
-          <label for="nama">Mata Pelajaran:</label>
+          <label for="nama">umur:</label>
           <input
             type="text"
-            id="MataPelajaran"
-            name="MataPelajaran"
-            value="{{ teacher?.mataPelajaran }}"
+            id="umur"
+            name="umur"
+            value="{{ user?.umur }}"
             required
           />
         </div>
         <div style="margin-bottom: 10px">
-          <label for="Guru">Deskripsi:</label>
+          <label for="Guru">email:</label>
           <input
             type="text"
-            id="deskripsi"
-            name="deskripsi"
-            value="{{ teacher?.deskripsi }}"
+            id="email"
+            name="email"
+            value="{{ user?.email }}"
             required
           />
         </div>
-        <button type="submit" style="margin-bottom: 10px">Edit Kelas</button>
+        <button type="submit" style="margin-bottom: 10px">Edit Data</button>
       </form>
     </div>
     <h2>Data Siswa</h2>
@@ -63,8 +63,8 @@
       <thead>
         <tr>
           <th scope="col">No</th>
-          <th scope="col">Nama Siswa</th>
-          <th scope="col">Whatsapp</th>
+          <th scope="col">Nama</th>
+          <th scope="col">nim</th>
           <th scope="col">Tindakan</th>
         </tr>
       </thead>
@@ -107,11 +107,9 @@
       Tambah Siswa
     </button>
 
-    <button
-      type="button"
-      class="btn btn-danger"
-    >
-      <a href="/Teacher">Back</a>
+    <button type="button" class="btn btn-danger"data-toggle="modal"
+    data-target="#addModal">
+      <a href="/user">Back</a>
     </button>
 
     <!-- Modal Tambah Siswa -->
@@ -143,10 +141,10 @@
             <!-- Form untuk menambah siswa -->
             <form
               id="siswa-form"
-              action="{{ route('Teachers.store') }}"
+              action="{{ route('user.store') }}"
               method="POST"
             >
-              <input type="hidden" value="{{ teacher.id }}" />
+              <input type="hidden" value="{{ user.id }}" />
               <div class="form-group">
                 <label for="nama">Nama Siswa:</label>
                 <input
@@ -158,12 +156,12 @@
                 />
               </div>
               <div class="form-group">
-                <label for="whatsapp">Whatsapp:</label>
+                <label for="nim">NIM:</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="whatsapp"
-                  name="whatsapp"
+                  id="nim"
+                  name="nim"
                   required
                 />
               </div>
