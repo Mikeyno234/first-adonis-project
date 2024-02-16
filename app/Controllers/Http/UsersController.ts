@@ -45,10 +45,10 @@ export default class UsersController {
       );
       session.put("authenticated", true);
       if (cek.role == "admin") {
-        console.log('admin')
+        console.log("admin");
         return response.redirect("/user");
       } else {
-        console.log('mahasiswa')
+        console.log("mahasiswa");
         return response.redirect("/mahasiswa/dashboard");
       }
     } catch (error) {
@@ -58,13 +58,14 @@ export default class UsersController {
   }
 
   public async store({ request, response }: HttpContextContract) {
-    const { nama, umur, email, nim } = request.all();
+    const { nama, umur, email, nim, password } = request.all();
 
     await User.create({
       nama,
       umur,
       email,
       nim,
+      password,
       dihapus: 0,
     });
 
@@ -89,20 +90,19 @@ export default class UsersController {
     params,
     session,
   }: HttpContextContract) {
-    const { nama, umur, email, nim, daftarUlang } = request.all();
+    const { nama, nim, daftarUlang, status } = request.all();
     const id = params.id;
 
     await User.query().where({ id }).update({
       nama,
-      umur,
-      email,
       nim,
+      status,
       daftarUlang,
       dihapus: 0,
     });
     session.flash({ notifivation: "Data Berhasil Diupdate!" });
 
-    return response.redirect(`/user/${id}`);
+    return response.redirect(`/user/`);
   }
 
   public async destroy({}: HttpContextContract) {}

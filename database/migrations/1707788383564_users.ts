@@ -12,7 +12,7 @@ export default class extends BaseSchema {
       table.string("email", 255).notNullable().unique();
       table.string("password", 180).notNullable();
       table.string("role");
-      table.string("status").notNullable();
+      table.string("status").notNullable().defaultTo(false);
       table.string("nim").notNullable().unique();
       table.boolean('daftar_ulang').defaultTo(false);
       table.tinyint("dihapus").defaultTo(0);

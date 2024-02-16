@@ -22,7 +22,7 @@
   <body>
     <div class="container">
       <h2>Edit Data</h2>
-      <form action="{{ route('register') }}" class="login-form" method="POST">
+      <form action="{{ route('user.update',{id:user?.id}) }}" class="login-form" method="post">
         <div class="form-group">
           <label for="name">Name:</label>
           <input
@@ -32,7 +32,7 @@
             name="nama"
             placeholder="Enter your name"
             required
-            value="{{ user[0]?.nama }}"
+            value="{{ user?.nama }}"
           />
         </div>
         <div class="form-group">
@@ -46,56 +46,34 @@
             required
             value="{{ user?.nim }}"
           />
-        </div>
+
+          <div class="form-group">
+            <label for="status">Status:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="status"
+              name="status"
+              required
+              value="{{ user?.status }}"
+            />
+          </div>
         <div class="form-group">
-          <label for="age">Age:</label>
-          <input
-            type="number"
-            class="form-control"
-            id="age"
-            name="umur"
-            placeholder="Enter your age"
-            required
-            value="{{ user?.umur }}"
-          />
-        </div>
-        <div class="form-group">
-          <label for="email">Email address:</label>
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            name="email"
-            placeholder="Enter your email"
-            required
-            value="{{ user?.email }}"
-          />
-        </div>
-        <div class="form-group">
-          <label for="password">Password:</label>
-          <input
-            type="password"
-            class="form-control"
-            id="password"
-            name="password"
-            placeholder="Enter your password"
-            required
-            value="{{ user?.password }}"
-          />
-        </div>
-        <div class="form-group">
-          <label for="password">daftar ulang:</label>
+          <label for="daftarulang">daftar ulang:</label>
           <input
             type="text"
             class="form-control"
             id="daftarulang"
-            name="daftarulang"
+            name="daftarUlang"
             placeholder="Enter your password"
             required
             value="{{ user?.daftarUlang }}"
           />
         </div>
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-primary">Edit Data</button>
+        <br>
+        <br>
+        <a type="button" class="btn btn-danger" href="/user">back</a>
       </form>
     </div>
 

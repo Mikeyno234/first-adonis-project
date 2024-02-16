@@ -10,5 +10,19 @@ export default class MahasiswasController {
     return view.render("mahasiswa.mahasiswa",{user})
   }
 
+  public async dataview({ view, auth }: HttpContextContract) {
+    const user = await User.query().where({ dihapus: 0 });
+
+    const nama = user.map((d, idx) => {
+      return { ...d.toJSON(), idx: idx + 1 };
+    });
+    
+
+    return view.render("mahasiswa.datamahasiswa", {
+      Admin: nama,
+      nama_Mahasiswa: "Mahasiswa",
+    });
+  }
+
 
 }

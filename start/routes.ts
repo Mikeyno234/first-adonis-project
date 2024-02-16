@@ -31,6 +31,9 @@ Route.get("/login", async ({ view }) => {
 Route.get("/register", async ({ view }) => {
   return view.render("register");
 });
+Route.get("/edit", async ({ view }) => {
+  return view.render("edit");
+});
 
 Route.post("/login", "UsersController.login").as("login");
 Route.post("/register", "UsersController.register").as("register");
@@ -59,7 +62,7 @@ Route.get("/Teacher/delete/:id", "TeachersController.delete").as(
   "Teachers.delete"
 );
 
-Route.get("/user", "UsersController.index");
+Route.get("/user", "UsersController.index").as("users.list");
 Route.get("/user/:id", "UsersController.show").as("user.detail");
 
 Route.post("/user/create", "UsersController.store").as("user.store");
@@ -68,3 +71,4 @@ Route.post("/user/update/:id", "UsersController.update").as("user.update");
 Route.get("/user/delete/:id", "UsersController.delete").as("user.delete");
 
 Route.get("/mahasiswa/dashboard", "MahasiswasController.index");
+Route.get("/mahasiswa/dashboard/datamahasiswa", "MahasiswasController.dataview");
